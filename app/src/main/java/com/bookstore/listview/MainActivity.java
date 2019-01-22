@@ -8,12 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.view.MenuInflater;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements BookListFragment.ItemListener {
 
-    private boolean mTwoPane;
+    private boolean mTwoPane = false;
     private Book mSelectedBook = null;
 
     @Override
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("my_toolbar");
+        actionBar.setTitle("Big Friendly Nav");
 
         int savedBookId = -1;
         if (savedInstanceState != null){
@@ -51,22 +52,25 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_toolbar, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_toolbar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id){
+
+        switch (item.getItemId()){
             case R.id.action_favorite:
-                Toast.makeText(getApplicationContext(),"View cart selected",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"View cart selected",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (this, CartActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_account:
-                Toast.makeText(getApplicationContext(),"Account selected",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Account selected",Toast.LENGTH_LONG).show();
                 return true;
             case R.id.action_settings:
-                Toast.makeText(getApplicationContext(),"Settings Selected",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Settings Selected",Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -75,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
     @Override
     public void itemSelected(Book b) {
+        mSelectedBook = b;
         if (mTwoPane) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
@@ -87,5 +92,14 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
 
             startActivity(intent);
         }
+    }
+
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        if (mSelectedBook != null) {
+            savedInstanceState.putInt(BookDetailFragment.EXTRA_BOOK_ID, mSelectedBook.getId());
+        }
+        super.onSaveInstanceState(savedInstanceState);
     }
 }

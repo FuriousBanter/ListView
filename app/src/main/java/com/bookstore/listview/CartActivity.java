@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -20,14 +21,21 @@ public class CartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("my_toolbar");
+        actionBar.setTitle("My Cart");
+
+        int savedBookId = -1;
+        if (savedInstanceState != null) {
+
+            savedBookId =  savedInstanceState.getInt(BookDetailFragment.EXTRA_BOOK_ID, -1);
+        }
 
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my_toolbar, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_toolbar, menu);
         return true;
     }
 
@@ -37,6 +45,7 @@ public class CartActivity extends AppCompatActivity {
         switch (id){
             case R.id.action_favorite:
                 Toast.makeText(getApplicationContext(),"Cart Selected",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent (this, CartActivity.class);
                 return true;
             case R.id.action_account:
                 Toast.makeText(getApplicationContext(),"Account selected",Toast.LENGTH_LONG).show();
