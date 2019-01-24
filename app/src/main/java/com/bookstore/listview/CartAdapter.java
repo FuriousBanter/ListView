@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,15 +18,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
         public LinearLayout mCartItem;
         public TextView mBookTextView;
-        public TextView mAmountTextView;
-        public TextView mPriceTextView;
+        public TextView mQuantityTextView;
+        public TextView mTotalPriceTextView;
+        public Button mAddBtn;
+        public Button mRemoveBtn;
 
         public ViewHolder(View v) {
             super(v);
             mCartItem = v.findViewById(R.id.cart_list_item);
             mBookTextView = v.findViewById(R.id.book);
-            mAmountTextView = v.findViewById(R.id.amount);
-            mPriceTextView = v.findViewById(R.id.price);
+            mQuantityTextView = v.findViewById(R.id.quantity);
+            mTotalPriceTextView = v.findViewById(R.id.totalPrice);
+            mAddBtn = v.findViewById(R.id.btnAdd);
+            mRemoveBtn = v.findViewById(R.id.btnRemove);
 
         }
     }
@@ -48,8 +53,32 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         final ShoppingCartItem c = mItems.get(position);
         holder.mBookTextView.setText((CharSequence) c.getBook().getTitle());
-        holder.mAmountTextView.setText("Amount" + c.getQuantity());
-        holder.mPriceTextView.setText("Price" + c.getTotalPrice());
+        holder.mQuantityTextView.setText("Quantity" + c.getQuantity());
+        holder.mTotalPriceTextView.setText("TotalPrice" + c.getTotalPrice());
+
+        holder.mAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int quantity = c.getQuantity();
+                c.setQuantity(quantity + 1);
+
+                CartAdapter.this.notifyDataSetChanged();
+            }
+        });
+
+        holder.mRemoveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int quantity = c.getQuantity();
+                if (quantity > 1) {
+                    c.setQuantity(quantity - 1);
+                }
+                else if (quantity == 1){
+                    mItems.remove(c);
+                }
+                CartAdapter.this.notifyDataSetChanged();
+            }
+        });
     }
 
 

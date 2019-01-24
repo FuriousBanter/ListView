@@ -19,7 +19,7 @@ public class BookDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Bookstore");
+        actionBar.setTitle("Bookstore Details");
 
 
         Intent intent = getIntent();

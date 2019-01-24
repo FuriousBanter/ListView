@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Big Friendly Nav");
+        actionBar.setTitle("Bookstore");
 
         int savedBookId = -1;
         if (savedInstanceState != null){

@@ -20,7 +20,7 @@
         android:paddingBottom="2dp" />
 
     <TextView
-        android:id="@+id/amount"
+        android:id="@+id/quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
@@ -29,12 +29,38 @@
         android:paddingBottom="4dp" />
 
     <TextView
-    android:id="@+id/price"
+    android:id="@+id/totalPrice"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:maxLines="1"
     android:ellipsize="end"
     android:paddingTop="2dp"
     android:paddingBottom="4dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnAdd"
+            android:text="@string/add"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp" />
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:text="@string/remove"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:paddingTop="4dp"
+            android:paddingBottom="2dp" />
+    </LinearLayout>
 
 </LinearLayout>
