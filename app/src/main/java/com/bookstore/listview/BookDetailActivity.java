@@ -1,5 +1,9 @@
 package com.bookstore.listview;
-
+//####### What is an activity? ########
+//activities serve as the entry point for user interface within the app. they are central to how a user navigates an app.
+//they handle smooth orientation changes, retaining data during transactions and kills unneeded processes.
+//unlike most desktop apps, mobile apps can be launched at different points in the app's life cycle, e.g., an app that opens into a video
+//sharing app that lists videos; can also, alternatively by for example following a link, open directly into a video, bypassing the list of recommended videos
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -9,22 +13,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class BookDetailActivity extends AppCompatActivity {
+//import external widgets and support libraries
 
+public class BookDetailActivity extends AppCompatActivity {
+//uses the appCompatActivity super class which has support for the action bar.
     private int book_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //called when the activity is first created. provides a bundle containing the
+        // activities previous frozen state if one exists.
+        //when the activity is started, do this
         super.onCreate(savedInstanceState);
+        //load saved state of this activity
         setContentView(R.layout.activity_book_detail);
-
+//make the view activity_book_detail
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Bookstore Details");
+        //initialise the action bar and name it bookstore details
 
-
+//intent launches activities from another activity., it is a bridge between different activities. holds an
+        //abstract description of action to be performed
         Intent intent = getIntent();
         book_id = intent.getIntExtra(BookDetailFragment.EXTRA_BOOK_ID, -1);
-
+//starts a transaction to launch an activity
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.add(R.id.book_details_one_pane, BookDetailFragment.newInstance(book_id));
         ft.commit();
@@ -39,9 +51,11 @@ public class BookDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //when an item in the action bar is selected: do one of these
         int id = item.getItemId();
         switch (id){
-            case R.id.action_favorite:
+            case R.id.action_favorite: //*action_Cart
+                //show a message that tells a user that the button they pressed in the action bar is selected
                 Toast.makeText(getApplicationContext(),"View cart selected",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent (this, CartActivity.class);
                 startActivity(intent);

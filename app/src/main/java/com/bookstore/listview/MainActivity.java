@@ -11,9 +11,9 @@ import android.widget.Toast;
 import android.view.MenuInflater;
 
 import java.util.List;
-
+//this is the activity that an app launches into by default. it is the first thing a user will typically sees after launching the app.
 public class MainActivity extends AppCompatActivity implements BookListFragment.ItemListener {
-
+//two pane sets up the different arrangement of the app fragments if the display is landscape instead of portrait(onepane)
     private boolean mTwoPane = false;
     private Book mSelectedBook = null;
 
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.my_toolbar, menu);
+        inflater.inflate(R.menu.my_toolbar, menu); //calls the action bar in the resources folder. R means resource.
         return true;
     }
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
     }
 
     @Override
-    public void itemSelected(Book b) {
+    public void itemSelected(Book b) { //if an item is selected, create an intent to start the book details activity
         mSelectedBook = b;
         if (mTwoPane) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -90,12 +90,12 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
             Intent intent = new Intent(this, BookDetailActivity.class);
             intent.putExtra(BookDetailFragment.EXTRA_BOOK_ID, b.getId());
 
-            startActivity(intent);
+            startActivity(intent); //starts book detail activity with the id of the selected book which is used to show the particular book in the new activity.
         }
     }
 
 
-    public void onSaveInstanceState(Bundle savedInstanceState) {
+    public void onSaveInstanceState(Bundle savedInstanceState) { //preserves the state of the activity
 
         if (mSelectedBook != null) {
             savedInstanceState.putInt(BookDetailFragment.EXTRA_BOOK_ID, mSelectedBook.getId());

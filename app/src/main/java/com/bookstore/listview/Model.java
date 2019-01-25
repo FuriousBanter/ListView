@@ -17,6 +17,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//###### What is a Model? ##########
+
+//a model is responsible for managing the app's data. it takes a request from the view and responds to
+//instructions from the adapter to manipulate the data.
 public class Model {
 
 
@@ -25,7 +30,7 @@ public class Model {
 
     private Context mCtx;
     private RequestQueue mRequestQueue;
-    private final List<Book> mBooks;
+    private final List<Book> mBooks; //create a list of books
 
     public static Model getInstance(Context context) {
         if (instance == null) {
@@ -38,7 +43,7 @@ public class Model {
         return mBooks;
     }
 
-    public Book findBookById(int book_id) {
+    public Book findBookById(int book_id) { //find a book by id
         Book book = null;
         for (Book b : mBooks) {
             if (b.getId() == book_id) {
@@ -55,7 +60,8 @@ public class Model {
         }
     }
 
-    public void requestBooks(final RecyclerView.Adapter adapter, String url) {
+    public void requestBooks(final RecyclerView.Adapter adapter, String url) { //pull all book information from the books table in the database by using a json request.
+        //the json then binds the values returned from the database through the api to values that can be passed into the constructor.
 
         JsonArrayRequest stringRequest = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
@@ -112,7 +118,7 @@ public class Model {
         }
     }
 
-    private final ShoppingCart mCart;
+    private final ShoppingCart mCart; //returns active shopping cart by returning the current list of books in the shopping cart array
     private Model(Context context) {
 
 
