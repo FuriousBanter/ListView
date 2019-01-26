@@ -7,7 +7,7 @@ class Book { //this is a class that creates book objects
     private String isbn;
     private int year;
     private double price;
-   // initialise all the variables for the constructor
+   // initialise all the variables for the object
 
     public Book(int id, String title, String author, String isbn, int year, double price) {
         this.id = id;
@@ -17,7 +17,7 @@ class Book { //this is a class that creates book objects
         this.year = year;
         this.price = price;
     }
-    //creates an array using data passed in from the model
+    //creates an array using data passed in from the model constructor
 
     public int getId() {
         return id;

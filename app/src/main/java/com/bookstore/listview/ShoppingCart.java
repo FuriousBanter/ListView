@@ -48,7 +48,7 @@ public class ShoppingCart {
         }
     }
 
-    private ShoppingCartItem contains(Book b) { //gets a particular book in the shopping cart.
+    private ShoppingCartItem contains(Book b) { //gets a particular book id.
         //returns all books then finds one with an id that equals the value passed in (b), then return the book.
         for (int i = 0; i != this.items.size(); i++) {
             ShoppingCartItem item = this.items.get(i);

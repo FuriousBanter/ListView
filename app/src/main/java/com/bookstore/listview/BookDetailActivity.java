@@ -2,8 +2,8 @@ package com.bookstore.listview;
 //####### What is an activity? ########
 //activities serve as the entry point for user interface within the app. they are central to how a user navigates an app.
 //they handle smooth orientation changes, retaining data during transactions and kills unneeded processes.
-//unlike most desktop apps, mobile apps can be launched at different points in the app's life cycle, e.g., an app that opens into a video
-//sharing app that lists videos; can also, alternatively by for example following a link, open directly into a video, bypassing the list of recommended videos
+//Unlike most desktop apps, mobile apps can be launched at different points in the app’s lifecycle, e.g., an app that opens into a video streaming app that lists recommended videos,
+// which could be alternatively opened by, for example, following a link which opens the app directly into a video, bypassing the list of recommended videos in the main activity.
 import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
@@ -23,7 +23,7 @@ public class BookDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //called when the activity is first created. provides a bundle containing the
         // activities previous frozen state if one exists.
-        //when the activity is started, do this
+        //calls the onCreate in the super while passing in the savedInstanceState
         super.onCreate(savedInstanceState);
         //load saved state of this activity
         setContentView(R.layout.activity_book_detail);

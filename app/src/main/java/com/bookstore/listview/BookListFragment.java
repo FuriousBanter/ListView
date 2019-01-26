@@ -14,7 +14,7 @@ import java.util.List;
 public class BookListFragment extends Fragment {
 
     public interface ItemListener {
-        public void itemSelected(Book b);
+        void itemSelected(Book b);
     }
 
     private MainActivity mActivity = null;

@@ -25,14 +25,15 @@
 </manifest>
 
 <!--######## What is a Manifest? ########-->
-<!--the android manifest provides information that the application uses to build the android system.
-It creates the package name for the application that serves as the unique identifier for the app
-It describes the components for the application eg, the activities, services, broadcast receivers and content providers that the app is composed of.
+<!--The android manifest provides information that the application uses to build the android system. It creates the package name for the application
+that serves as the unique identifier for the app. It describes the components for the application e.g., the activities, services, broadcast receivers
+and content providers that the app is composed of.
 
-It names the classes that implement each of the components and publishes their capabilities. These declarations
-are to let android know what each of the components are for and when they should be launched.
-It determines which permissions that's the app must have and what others require in order to access protected parts of the api and what
-order to access the apps components. It declares the permissions that others are required to have in order to interact with the applications components.
+It names the classes that implement each of the components and publishes their capabilities. These declarations are to let android know what each of
+the components are for and when they should be launched. It determines which permissions the app must have and what is required in order to access
+protected parts of the api and what order to access the apps components. It declares the permissions that others are required to have in order to
+interact with the applications components.
 
-It lists the instrumentation classes that provide profiling and other info during runtime. these are removed before the app is published. It declares the minimum level of the android api
-that the application requires and lists the libraries that the application must be linked against-->
+It lists the instrumentation classes that provide profiling and other info during runtime. These are removed before the app is published. It declares
+the minimum level of the android api that the application requires and lists the libraries that the application must be linked against.
+-->

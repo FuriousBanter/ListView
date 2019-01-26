@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
         if (savedInstanceState != null){
             savedBookId = savedInstanceState.getInt(BookDetailFragment.EXTRA_BOOK_ID, -1);
         }
-
+//create a list of books to display
         List<Book> books = Model.getInstance(this).getBooks();
         if (!books.isEmpty()){
             if (savedBookId == -1) {
@@ -52,8 +52,7 @@ public class MainActivity extends AppCompatActivity implements BookListFragment.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.my_toolbar, menu); //calls the action bar in the resources folder. R means resource.
+        getMenuInflater().inflate(R.menu.my_toolbar, menu); //calls the action bar in the resources folder. R means resource.
         return true;
     }
 

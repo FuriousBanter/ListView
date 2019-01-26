@@ -18,7 +18,7 @@ import java.util.List;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
     //a recycler view is a flexible view for providing a limited window into a large data set.
     //as a user scrolls through the app, off screen data is destroyed as new data is shown on the screen to save
-    //phone memory
+    //device memory
     private List<Book> mBooks;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
